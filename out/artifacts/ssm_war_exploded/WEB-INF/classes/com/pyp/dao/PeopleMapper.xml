@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pyp.dao.PeopleMapper">
+
+    <!--增加一个Book-->
+    <insert id="addPeople" parameterType="int">
+      insert into spring.human(id,name ,age,address)
+      values (#{id}, #{name}, #{age},#{address})
+   </insert>
+
+    <!--根据id删除一个Book-->
+    <delete id="deletePeopleById" parameterType="int">
+      delete from spring.human where id=#{id}
+   </delete>
+
+    <!--更新Book-->
+    <update id="updatePeople" parameterType="people">
+      update spring.human
+      set address = #{address},name = #{name},age = #{age}
+      where id = #{id}
+   </update>
+
+    <!--根据id查询,返回一个Book-->
+    <select id="queryPeopleById" resultType="people">
+      select * from human
+      where id = #{id}
+   </select>
+
+    <!--查询全部Book-->
+    <select id="queryAllPeople" resultType="people">
+      SELECT * from human
+   </select>
+
+</mapper>
